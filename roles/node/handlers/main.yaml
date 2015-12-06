@@ -1,0 +1,6 @@
+- name: restart apache
+  service: name=httpd state=restarted
+- name: restart mcollective
+  service: name=ruby193-mcollective state=restarted
+- name: restart rsyslog
+  service: name=rsyslog state=restarted

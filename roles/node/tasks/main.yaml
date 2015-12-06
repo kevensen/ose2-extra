@@ -1,0 +1,14 @@
+- lineinfile: dest=/etc/sysconfig/httpd line="OPTIONS=\"-DOpenShiftFrontendSyslogEnabled\""
+  name: "Enable Syslog for Apache"
+  notify:
+  - restart apache
+- lineinfile: dest=/etc/openshift/node.conf regexp="^#PLATFORM_LOG_CLASS=" line="PLATFORM_LOG_CLASS=SyslogLogger"
+  name: "Enable Syslog for the Node Platform"
+  notify:
+  - restart mcollective
+  - restart rsyslog
+- lineinfile: dest=/etc/openshift/node.conf insertafter="PLATFORM_LOG_CLASS=SyslogLogger" line="PLATFORM_SYSLOG_THRESHOLD=LOG_NOTICE"
+  name: "Threshold Setting"
+  notify:
+  - restart mcollective
+  - restart rsyslog
