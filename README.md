@@ -5,7 +5,7 @@ Overview
 ---
 This Ansible project accomplishes five things.
 
-1. Configure rsyslog to send logs to remote server over two-way TLS.
+1. Configure rsyslog to send logs to remote server over two-way TLS (6514/tcp).
 
 2. Configure auditd to log rsyslog, and as a result, to a remote server.
 
@@ -14,6 +14,8 @@ This Ansible project accomplishes five things.
 4. Enable app owners to use private SSL certificates by default.
 
 5. Configure Broker to send logs to rsyslog
+
+6. Configure the Node and Apache on the node to send logs to rsyslog.
 
 Remote rsyslog
 ---
