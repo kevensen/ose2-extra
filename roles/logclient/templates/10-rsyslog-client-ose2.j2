@@ -1,0 +1,16 @@
+$DefaultNetStreamDriver gtls
+$DefaultNetStreamDriverCAFile {{ rsyslog_cafile }}
+$DefaultNetStreamDriverCertFile {{ rsyslog_certfile }}
+$DefaultNetStreamDriverKeyFile {{ rsyslog_keyfile }}
+
+$ActionSendStreamDriverMode 1
+$ActionSendStreamDriverAuthMode x509/name
+
+{% for host in groups['logger'] %}
+$ActionSendStreamDriverPermittedPeer {{ host }}
+{% endfor %}
+
+{% for host in groups['logger'] %}
+*.* @@(o){{ host }}:6514
+{% endfor %}
+

@@ -1,0 +1,16 @@
+[infrastructure:children]
+broker
+node
+console
+
+[broker]
+broker.ose2.ravello.kenscloud.io
+
+[node]
+node1.ose2.ravello.kenscloud.io
+
+[console]
+broker.ose2.ravello.kenscloud.io
+
+[logger]
+logger.ose2.ravello.kenscloud.io

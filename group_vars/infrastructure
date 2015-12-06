@@ -1,0 +1,5 @@
+---
+rsyslog_cafile: /etc/pki/CA/certs/ca.pem
+rsyslog_certfile: /etc/pki/tls/certs/log-cert.pem
+rsyslog_keyfile: /etc/pki/tls/private/log-key.pem
+

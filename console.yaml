@@ -1,0 +1,8 @@
+---
+- hosts: console
+  roles:
+    - common
+    - console
+    - logclient
+  remote_user: cloud-user
+  sudo: yes

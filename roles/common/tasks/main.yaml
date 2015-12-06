@@ -1,0 +1,6 @@
+- name: Install rsyslog-gnutls
+  yum: name=rsyslog-gnutls state=installed
+- name: Install ntpd
+  yum: name=ntp state=installed
+  notify:
+  - restart ntp

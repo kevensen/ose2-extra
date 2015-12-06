@@ -1,0 +1,25 @@
+$ModLoad imtcp
+
+$DefaultNetStreamDriver gtls
+$DefaultNetStreamDriverCAFile {{ rsyslog_cafile }}
+$DefaultNetStreamDriverCertFile {{ rsyslog_certfile }}
+$DefaultNetStreamDriverKeyFile {{ rsyslog_keyfile }}
+
+{% for client in groups['infrastructure'] %}
+$InputTCPServerStreamDriverPermittedPeer {{ client }}
+{% endfor %}
+
+$InputTCPServerStreamDriverMode 1
+$InputTCPServerStreamDriverAuthMode x509/name
+$InputTCPServerRun 6514
+
+$template HostAudit, "/var/log/remote/%HOSTNAME%/audit_log"
+$template auditFormat, "%msg%\n"
+:programname,   isequal,        "audispd"       -?HostAudit;auditFormat
+:programname,   isequal,        "audispd"       ~
+
+{% for client in groups['infrastructure'] %}
+:hostname, isequal, "{{ hostvars[client]['inventory_hostname_short'] }}" /var/log/remote/{{ hostvars[client]['inventory_hostname_short'] }}/messages
+:hostname, isequal, "{{ hostvars[client]['inventory_hostname_short'] }}" ~
+{% endfor %}
+

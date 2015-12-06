@@ -1,0 +1,7 @@
+---
+- hosts: logger
+  roles:
+    - common
+    - logger
+  remote_user: cloud-user
+  sudo: yes

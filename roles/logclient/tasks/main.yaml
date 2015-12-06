@@ -1,0 +1,11 @@
+- template: src=10-rsyslog-client-ose2.j2 dest=/etc/rsyslog.d/10-rsyslog-client-ose2.conf owner=root group=root mode=0644
+  notify:
+    - restart rsyslog
+- lineinfile: dest=/etc/rsyslog.conf line="$PreserveFQDN on" state=present insertafter="\#\#\#\# GLOBAL DIRECTIVES \#\#\#\#"
+  notify:
+    - restart rsyslog
+- copy: src=syslog.conf dest=/etc/audisp/plugins.d/syslog.conf force=yes backup=yes
+  notify:
+    - restart auditd
+    - restart rsyslog
+

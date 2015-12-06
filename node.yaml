@@ -1,0 +1,8 @@
+---
+- hosts: node
+  roles:
+    - common
+    - node
+    - logclient
+  remote_user: cloud-user
+  sudo: yes

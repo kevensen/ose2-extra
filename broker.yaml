@@ -1,0 +1,8 @@
+---
+- hosts: broker
+  roles:
+    - common
+    - broker
+    - logclient
+  remote_user: cloud-user
+  sudo: yes
