@@ -1,0 +1,4 @@
+- replace: dest=/etc/openshift/broker.conf regexp="^DEFAULT_ALLOW_PRIVATE_SSL_CERTIFICATES=\"false\"" replace="DEFAULT_ALLOW_PRIVATE_SSL_CERTIFICATES=\"true\""
+  notify: restart openshift-broker
+- replace: dest=/etc/openshift/broker.conf regexp="\# SYSLOG_ENABLED=\"true\"" replace="SYSLOG_ENABLED=\"true\""
+  notify: restart openshift-broker
