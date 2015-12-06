@@ -4,3 +4,6 @@
   with_items: "{{ app_rb_files.stdout_lines }}"
   replace: dest={{ item }} regexp="    app_url" replace="    ssl_app_url = app_url.sub('http','https')"
   notify: restart console
+- lineinfile: dest=/etc/openshift/console.conf line="SYSLOG_ENABLED=true"
+  name: "Enabling Syslog for Management Console Components"
+  notify: restart console

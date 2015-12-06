@@ -3,7 +3,7 @@ OpenShift Enterprise 2 - Extras
 
 Overview
 ---
-This Ansible project accomplishes five things.
+This Ansible project accomplishes several things.
 
 1. Configure rsyslog to send logs to remote server over two-way TLS (6514/tcp).
 
@@ -13,9 +13,11 @@ This Ansible project accomplishes five things.
 
 4. Enable app owners to use private SSL certificates by default.
 
-5. Configure Broker to send logs to rsyslog
+5. Configure Broker to send logs to rsyslog.
 
 6. Configure the Node and Apache on the node to send logs to rsyslog.
+
+7. Configure the Console to send all logs to rsyslog.
 
 Remote rsyslog
 ---
