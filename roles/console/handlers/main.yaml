@@ -1,0 +1,2 @@
+- name: restart console
+  service: name=openshift-console state=restarted

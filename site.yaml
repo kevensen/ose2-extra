@@ -2,3 +2,4 @@
 - include: node.yaml
 - include: broker.yaml
 - include: logger.yaml
+- include: console.yaml

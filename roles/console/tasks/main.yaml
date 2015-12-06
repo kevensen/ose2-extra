@@ -1,0 +1,6 @@
+- shell: find /opt/rh/ruby193/ -type f -name "application.rb"
+  register: app_rb_files
+- name: update application url
+  with_items: "{{ app_rb_files.stdout_lines }}"
+  replace: dest={{ item }} regexp="    app_url" replace="    ssl_app_url = app_url.sub('http','https')"
+  notify: restart console
